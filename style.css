@@ -1,4 +1,5 @@
-/* reset from Kevin Powell edit if you like */
+/* Theme */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 /* makes sizing simpler */
 *,
@@ -52,7 +53,7 @@ figcaption {
 }
 
 /* for container queries, landmarks as containers */
-body > :is(header, footer),
+body> :is(header, footer),
 main {
   container-type: inline-size;
 }
@@ -63,9 +64,6 @@ main {
   margin: 0;
   padding: 0;
 }
-
-/* Theme */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
   --clr-neutral-100: hsl(0, 0%, 100%);
@@ -141,7 +139,7 @@ main {
 }
 
 /* Composition */
-.flow > * + * {
+.flow>*+* {
   margin-block-start: var(--flow-space, 1em);
 }
 
@@ -176,4 +174,92 @@ body {
   font-family: var(--font-base);
   background-color: var(--clr-accent-light-1);
   color: var(--clr-primary-dark);
+}
+
+a {
+  text-transform: uppercase;
+}
+
+header>*,
+footer>*,
+section>* {
+  margin-inline: auto;
+
+  @media (min-width:800px) {
+    max-width: 800px;
+  }
+}
+
+section:nth-child(2n) {
+  background-color: var(--clr-primary-light-1)
+}
+
+section:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.container {
+  height: 100%;
+}
+
+nav {
+  align-items: center;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2.5rem;
+  margin-block: 0.5rem;
+
+  &:hover {
+    .logo>g {
+      stroke: var(--clr-primary-light-1);
+    }
+  }
+
+  h1 {
+    width: 50%;
+    line-height: 1;
+  }
+
+  .logo {
+    height: 100%;
+    width: auto;
+    margin: 1rem;
+
+    g {
+      stroke: var(--clr-accent);
+    }
+  }
+}
+
+header {
+  background-color: white;
+
+  nav {
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    justify-content: space-between;
+
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 3.5rem;
+
+      li {
+        font-weight: var(--fw-semi-bold);
+      }
+    }
+  }
+}
+
+footer {
+  display: block;
+  height: 1rem;
 }
