@@ -11,19 +11,18 @@
 
 <body>
   <header>
-    <div />
     <nav>
-      <a class="banner" href="#">
-        <svg class="banner__icon" width="214" height="210" viewBox="0 0 214 210" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" stroke="white" stroke-width="12">
+      <div class="banner">
+        <svg class="icon" width="214" height="210" viewBox="0 0 214 210" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke-width="12">
             <path
               d="M116.833 193.533C117.406 192.909 117.969 192.279 118.522 191.645L168.173 160.226C206.289 136.107 217.36 86.0907 192.816 48.5247C189.153 42.9185 181.619 41.3343 175.976 44.905L125.764 76.6782C121.37 70.1605 116.086 64.0725 109.92 58.5872L52.4904 7.49831C46.8526 2.48295 38.1677 2.90777 33.061 8.46735C-2.89261 47.6094 0.211903 108.041 39.9737 143.413L97.4031 194.502C103.041 199.517 111.726 199.092 116.833 193.533Z" />
             <path
               d="M115.122 194.336C115.527 193.897 115.927 193.455 116.319 193.009L153.69 169.521C182.93 151.143 191.451 112.997 172.598 84.3362C169.529 79.6722 163.25 78.3762 158.555 81.3272L121.425 104.664C118.17 100 114.303 95.6362 109.83 91.6843L66.4654 53.3677C61.8146 49.2582 54.6598 49.6021 50.4409 54.1641C22.9065 83.9378 25.2893 129.917 55.732 156.816L99.097 195.132C103.748 199.242 110.903 198.898 115.122 194.336Z" />
           </g>
         </svg>
-        <span class="banner__text">Planned Planthood</span>
-      </a>
+        <h1 class="text">Planned Planthood</h1>
+      </div>
       <ul role="list">
         <li><a href="">Hem</a></li>
         <li><a href="">Historik</a></li>
@@ -31,13 +30,19 @@
         <li><a href="">Kontakt</a></li>
       </ul>
     </nav>
-    <div />
   </header>
   <main>
     <section>
-      <div>
-        <h1>Uppskattade växter</h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, corporis ipsum.
+      <div class="hero">
+        <h3>Uppskattade växter</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, corporis ipsum.</p>
+        <figure>
+          <img src="Assets/plants/basilika.jpg" alt="" />
+          <img src="Assets/plants/gurka.jpg" alt="" />
+          <img src="Assets/plants/ormbunke.jpg" alt="" />
+          <img src="Assets/plants/pelargon.jpg" alt="" />
+          <img src="Assets/plants/sallad.jpg" alt="" />
+        </figure>
       </div>
     </section>
     <div>
@@ -47,13 +52,17 @@
       <h2 class="visually-hidden">Blomsterartiklar</h2>
       <div class="plant__grid">
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="flowers">Blommor</li>
-            <li class="edible">Ätbart</li>
-            <li class="green">Grönska</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/gurka.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="flowers">Blommor</li>
+            <li data-tag="edible">Ätbart</li>
+            <li data-tag="green">Grönska</li>
           </ul>
           <h3>Gurka</h3>
-          <p class="plant__description">
+          <p class="description">
             Gurka växer snabbt, är enkel att odla och ger mängder med gurkor, bara man är noga med vattning,
             omplantering,
             duschning och gödsling.
@@ -64,39 +73,51 @@
           </div>
         </article>
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="sunloving">Solälskande</li>
-            <li class="easy">Lättodlat</li>
-            <li class="edible">Ätbart</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/tomat.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="sunloving">Solälskande</li>
+            <li data-tag="easy">Lättodlat</li>
+            <li data-tag="edible">Ätbart</li>
           </ul>
           <h3>Tomat</h3>
-          <p class="plant__description">En perfekt grönsak att odla på balkongen eller i trädgården. Ger riklig skörd
+          <p class="description">En perfekt grönsak att odla på balkongen eller i trädgården. Ger riklig skörd
             under sommaren.</p>
           Anna Odlare
           2024-12-05
         </article>
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="decorative">Dekorativ</li>
-            <li class="colorful">Färgstark</li>
-            <li class="robust">Tålig</li>
-            <li class="flowers">Blommor</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/pelargon.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="decorative">Dekorativ</li>
+            <li data-tag="colorful">Färgstark</li>
+            <li data-tag="robust">Tålig</li>
+            <li data-tag="flowers">Blommor</li>
           </ul>
           <h3>Pelargon</h3>
-          <p class="plant__description">En vacker och lättskött blomma som trivs både inne och ute under sommaren.</p>
+          <p class="description">En vacker och lättskött blomma som trivs både inne och ute under sommaren.</p>
           <div>
             <span>Blomsterkalle</span>
             2024-12-03
           </div>
         </article>
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="air">Kryddor</li>
-            <li class="fragrant">Doftande</li>
-            <li class="sunloving">Solälskande</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/basilika.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="air">Kryddor</li>
+            <li data-tag="fragrant">Doftande</li>
+            <li data-tag="sunloving">Solälskande</li>
           </ul>
           <h3>Basilika</h3>
-          <p class="plant__description">En fantastisk krydda för pastarätter och sallader. Trivs bäst i ett soligt
+          <p class="description">En fantastisk krydda för pastarätter och sallader. Trivs bäst i ett soligt
             fönster.</p>
           <div>
             <span>Krydd-Malin</span>
@@ -104,13 +125,17 @@
           </div>
         </article>
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="fast">Snabbväxande</li>
-            <li class="edible">Ätbart</li>
-            <li class="green">Grönska</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/sallad.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="fast">Snabbväxande</li>
+            <li data-tag="edible">Ätbart</li>
+            <li data-tag="green">Grönska</li>
           </ul>
           <h3>Sallad</h3>
-          <p class="plant__description">Sallad är en av de enklaste grönsakerna att odla och ger snabba resultat för
+          <p class="description">Sallad är en av de enklaste grönsakerna att odla och ger snabba resultat för
             färska måltider.</p>
           <div>
             Grönis
@@ -118,13 +143,125 @@
           </div>
         </article>
         <article class="plant">
-          <ul class="plant__adjectives">
-            <li class="air">Luftfuktande</li>
-            <li class="green">Grönska</li>
-            <li class="decorative">Dekorativ</li>
+          <div class="image">
+            <img class="subject" src="Assets/plants/ormbunke.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="air">Luftfuktande</li>
+            <li data-tag="green">Grönska</li>
+            <li data-tag="decorative">Dekorativ</li>
           </ul>
           <h3>Ormbunke</h3>
-          <p class="plant__description">En klassisk växt som passar perfekt i badrummet eller på skuggiga platser.</p>
+          <p class="description">En klassisk växt som passar perfekt i badrummet eller på skuggiga platser.</p>
+          <div>
+            Naturvännen
+            2024-12-08
+          </div>
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/gurka.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="flowers">Blommor</li>
+            <li data-tag="edible">Ätbart</li>
+            <li data-tag="green">Grönska</li>
+          </ul>
+          <h3>Gurka</h3>
+          <p class="description">
+            Gurka växer snabbt, är enkel att odla och ger mängder med gurkor, bara man är noga med vattning,
+            omplantering,
+            duschning och gödsling.
+          </p>
+          <div>
+            <span>Coolio</span>
+            2024-04-01
+          </div>
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/tomat.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="sunloving">Solälskande</li>
+            <li data-tag="easy">Lättodlat</li>
+            <li data-tag="edible">Ätbart</li>
+          </ul>
+          <h3>Tomat</h3>
+          <p class="description">En perfekt grönsak att odla på balkongen eller i trädgården. Ger riklig skörd
+            under sommaren.</p>
+          Anna Odlare
+          2024-12-05
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/pelargon.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="decorative">Dekorativ</li>
+            <li data-tag="colorful">Färgstark</li>
+            <li data-tag="robust">Tålig</li>
+            <li data-tag="flowers">Blommor</li>
+          </ul>
+          <h3>Pelargon</h3>
+          <p class="description">En vacker och lättskött blomma som trivs både inne och ute under sommaren.</p>
+          <div>
+            <span>Blomsterkalle</span>
+            2024-12-03
+          </div>
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/basilika.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="air">Kryddor</li>
+            <li data-tag="fragrant">Doftande</li>
+            <li data-tag="sunloving">Solälskande</li>
+          </ul>
+          <h3>Basilika</h3>
+          <p class="description">En fantastisk krydda för pastarätter och sallader. Trivs bäst i ett soligt
+            fönster.</p>
+          <div>
+            <span>Krydd-Malin</span>
+            2024-12-07
+          </div>
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/sallad.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="fast">Snabbväxande</li>
+            <li data-tag="edible">Ätbart</li>
+            <li data-tag="green">Grönska</li>
+          </ul>
+          <h3>Sallad</h3>
+          <p class="description">Sallad är en av de enklaste grönsakerna att odla och ger snabba resultat för
+            färska måltider.</p>
+          <div>
+            Grönis
+            2024-12-06
+          </div>
+        </article>
+        <article class="plant">
+          <div class="image">
+            <img class="subject" src="Assets/plants/ormbunke.jpg" />
+            <img class="svg" src="Assets/images/icon-seedling-2.svg" />
+          </div>
+          <ul class="adjectives">
+            <li data-tag="air">Luftfuktande</li>
+            <li data-tag="green">Grönska</li>
+            <li data-tag="decorative">Dekorativ</li>
+          </ul>
+          <h3>Ormbunke</h3>
+          <p class="description">En klassisk växt som passar perfekt i badrummet eller på skuggiga platser.</p>
           <div>
             Naturvännen
             2024-12-08
@@ -144,19 +281,30 @@
     </section>
   </main>
   <footer>
-    <div class="breakpoint footer__content">
-      <div class="footer__content__text">
-        <span>
+    <div class="content">
+      <div class="info">
+        <div class="banner">
+          <svg class="icon" width="214" height="210" viewBox="0 0 214 210" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="white" stroke-width="12">
+              <path
+                d="M116.833 193.533C117.406 192.909 117.969 192.279 118.522 191.645L168.173 160.226C206.289 136.107 217.36 86.0907 192.816 48.5247C189.153 42.9185 181.619 41.3343 175.976 44.905L125.764 76.6782C121.37 70.1605 116.086 64.0725 109.92 58.5872L52.4904 7.49831C46.8526 2.48295 38.1677 2.90777 33.061 8.46735C-2.89261 47.6094 0.211903 108.041 39.9737 143.413L97.4031 194.502C103.041 199.517 111.726 199.092 116.833 193.533Z" />
+              <path
+                d="M115.122 194.336C115.527 193.897 115.927 193.455 116.319 193.009L153.69 169.521C182.93 151.143 191.451 112.997 172.598 84.3362C169.529 79.6722 163.25 78.3762 158.555 81.3272L121.425 104.664C118.17 100 114.303 95.6362 109.83 91.6843L66.4654 53.3677C61.8146 49.2582 54.6598 49.6021 50.4409 54.1641C22.9065 83.9378 25.2893 129.917 55.732 156.816L99.097 195.132C103.748 199.242 110.903 198.898 115.122 194.336Z" />
+            </g>
+          </svg>
+          <span class="text">Planned Planthood</span>
+        </div>
+        <p class="text">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque, veniam ducimus aut sint atque ullam alias
           perspiciatis fuga. Consequuntur nesciunt ea corrupti aperiam fugit inventore ratione earum. Iure, eius
           molestias?
-        </span>
-        <ul>
-          <li>Telefon: 020-1234567</li>
-          <li>info@plannedplant.com</li>
+        </p>
+        <ul class="footer__content__info__contact" role="list">
+          <li><img src="Assets/images/icon-phone.svg" alt="" /><span>Telefon: 020-1234567</span></li>
+          <li><img src="Assets/images/icon-email.svg" alt="" /><span>info@plannedplant.com</span></li>
         </ul>
       </div>
-      <nav class="footer__content__menu">
+      <nav class="menu">
         <ul role="list">
           <li><a href="">Hem</a></li>
           <li><a href="">Historik</a></li>
