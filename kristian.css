@@ -25,18 +25,10 @@ main>* {
 
     >* {
         margin-inline: auto;
-
-        /* Large devices (laptops/desktops, 992px and up) */
-        @media (max-width: 600px) {
-            max-width: 100%
-        }
-
-        /* Large devices (laptops/desktops, 900px and up) */
-        @media (min-width: 992px) {
-            max-width: 992px;
-        }
     }
+
 }
+
 
 main {
     display: grid;
@@ -554,4 +546,34 @@ footer {
             }
         }
     }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (max-width: 992px) {
+
+    header,
+    footer,
+    main>* {
+        >* {
+            max-width: 100%
+        }
+    }
+
+}
+
+/* Large devices (laptops/desktops, 900px and up) */
+@media (min-width: 992px) {
+
+    header,
+    footer,
+    main>* {
+        >* {
+            max-width: 992px;
+        }
+    }
+
+
+
+
 }
