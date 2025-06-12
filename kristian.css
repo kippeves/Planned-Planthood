@@ -83,32 +83,32 @@ section:last-of-type {
     gap: 1rem;
     max-width: 10rem;
 
-    .text {
-        font-weight: var(--fw-600);
-        text-transform: uppercase;
-        font-size: var(--fs-400);
-        line-height: 1;
-    }
+}
 
-    .icon {
-        height: 125%;
-        width: auto;
-    }
+.banner__text {
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    font-size: var(--fs-400);
+    line-height: 1;
+}
+
+.banner__icon {
+    height: 125%;
+    width: auto;
 }
 
 header {
     background-color: white;
     height: 100%;
 
-    .banner {
-        .text {
-            color: var(--clr-accent);
-        }
-
-        .icon g {
-            stroke: var(--clr-accent);
-        }
+    .banner__text {
+        color: var(--clr-accent);
     }
+
+    .banner__icon g {
+        stroke: var(--clr-accent);
+    }
+
 
     nav {
         display: flex;
