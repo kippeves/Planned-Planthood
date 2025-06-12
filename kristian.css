@@ -215,143 +215,143 @@ section>div.info {
     gap: 1rem;
     grid-auto-flow: dense;
     grid-template-rows: auto auto 1fr auto auto;
+    padding-inline: 0;
+}
 
-    .plant {
-        display: grid;
-        grid-template-rows: subgrid;
-        background-color: white;
-        grid-row: span 5;
-        padding: 0.9rem;
-        box-shadow: var(--border-shadow);
-        gap: 1rem;
+.plant {
+    display: grid;
+    grid-template-rows: subgrid;
+    background-color: white;
+    grid-row: span 5;
+    padding: 0.9rem;
+    box-shadow: var(--border-shadow);
+    gap: 1rem;
 
-        h3 {
-            font-size: clamp(var(--fs-600), var(--fs-400), var(--fs-200));
-        }
-
-        .description {
-            font-weight: var(--fw-400);
-            font-size: var(--fs-400);
-            text-wrap: pretty;
-        }
-
-        .image {
-            display: grid;
-            grid-template-columns: 1fr;
-
-            img {
-                grid-row-start: 1;
-                grid-column-start: 1;
-            }
-
-            .svg {
-                height: 100%;
-                scale: 35%;
-                filter: opacity(50%);
-            }
-
-
-
-            img:not(.svg) {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-            }
-        }
-
-        .adjectives {
-            display: flex;
-            gap: .25rem;
-            flex-wrap: wrap;
-            align-self: center;
-            text-transform: uppercase;
-            align-items: flex-start;
-            justify-content: start;
-            height: 100%;
-
-            li {
-                padding: .5rem;
-                font-weight: var(--fw-bold);
-                color: white;
-                display: inline-block;
-                border-radius: 1.5rem;
-                font-size: var(--fs-100);
-
-                &[data-tag="air"] {
-                    background-color: var(--clr-air)
-                }
-
-                &[data-tag="green"] {
-                    background-color: var(--clr-green)
-                }
-
-                &[data-tag="fragrant"] {
-                    background-color: var(--clr-fragrant)
-                }
-
-                &[data-tag="air"] {
-                    background-color: var(--clr-air)
-                }
-
-                &[data-tag="fast"] {
-                    background-color: var(--clr-fast)
-                }
-
-                &[data-tag="edible"] {
-                    background-color: var(--clr-edible)
-                }
-
-                &[data-tag="easy"] {
-                    background-color: var(--clr-easy);
-                }
-
-                &[data-tag="sunloving"] {
-                    background-color: var(--clr-sunloving);
-                }
-
-                &[data-tag="flowers"] {
-                    background-color: var(--clr-flower);
-                }
-
-                &[data-tag="robust"] {
-                    background-color: var(--clr-robust);
-                }
-
-                &[data-tag="decorative"] {
-                    background-color: var(--clr-decorative);
-                }
-
-                &[data-tag="colorful"] {
-                    background-color: var(--clr-colorful);
-                }
-
-            }
-        }
-
-        .author {
-            height: 50px;
-            display: flex;
-            gap: 1rem;
-
-            .info {
-                display: flex;
-                flex-direction: column;
-                align-self: center;
-
-                .name {
-                    font-weight: var(--fw-semi-bold);
-                }
-
-                flex-shrink: 1;
-            }
-
-            .avatar {
-                border-radius: 100%;
-                border: 1px solid dodgerblue;
-                aspect-ratio: 1;
-            }
-        }
+    h3 {
+        font-size: var(--fs-600)
     }
+}
+
+.plant__author {
+    height: 50px;
+    display: flex;
+    gap: 1rem;
+}
+
+.plant__author__info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    .name {
+        font-weight: var(--fw-semi-bold);
+    }
+
+    flex-shrink: 1;
+}
+
+.plant__author__avatar {
+    border-radius: 100%;
+    border: 1px solid black;
+    aspect-ratio: 1;
+}
+
+.plant__tags {
+    display: flex;
+    gap: .25rem;
+    flex-wrap: wrap;
+    align-self: center;
+    text-transform: uppercase;
+    align-items: flex-start;
+    justify-content: start;
+    height: 100%;
+
+    li {
+        padding: .5rem;
+        font-weight: var(--fw-bold);
+        color: white;
+        display: inline-block;
+        border-radius: 1.5rem;
+        font-size: var(--fs-100);
+
+        &[data-tag="air"] {
+            background-color: var(--clr-air)
+        }
+
+        &[data-tag="green"] {
+            background-color: var(--clr-green)
+        }
+
+        &[data-tag="fragrant"] {
+            background-color: var(--clr-fragrant)
+        }
+
+        &[data-tag="air"] {
+            background-color: var(--clr-air)
+        }
+
+        &[data-tag="fast"] {
+            background-color: var(--clr-fast)
+        }
+
+        &[data-tag="edible"] {
+            background-color: var(--clr-edible)
+        }
+
+        &[data-tag="easy"] {
+            background-color: var(--clr-easy);
+        }
+
+        &[data-tag="sunloving"] {
+            background-color: var(--clr-sunloving);
+        }
+
+        &[data-tag="flowers"] {
+            background-color: var(--clr-flower);
+        }
+
+        &[data-tag="robust"] {
+            background-color: var(--clr-robust);
+        }
+
+        &[data-tag="decorative"] {
+            background-color: var(--clr-decorative);
+        }
+
+        &[data-tag="colorful"] {
+            background-color: var(--clr-colorful);
+        }
+
+    }
+}
+
+.plant__description {
+    font-weight: var(--fw-400);
+    font-size: var(--fs-400);
+    text-wrap: pretty;
+}
+
+.plant__image {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    img {
+        grid-row-start: 1;
+        grid-column-start: 1;
+    }
+
+    .subject {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .svg {
+        height: 100%;
+        scale: 35%;
+        filter: opacity(50%);
+    }
+
 }
 
 footer {
@@ -411,11 +411,6 @@ footer {
     }
 }
 
-
-
-
-
-
 /* Large devices (laptops/desktops, 992px and up) */
 @media (max-width : 992px) {
 
@@ -423,7 +418,7 @@ footer {
         display: none;
     }
 
-    .plant .image img {
+    .plant__image img {
         aspect-ratio: 1/1;
     }
 
@@ -435,7 +430,7 @@ footer {
         }
     }
 
-    section>div.info {
+    .info {
         flex-direction: column;
         align-items: center;
         gap: 2.5rem;
@@ -473,12 +468,12 @@ footer {
 
     .plant__grid {
         grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
     }
 }
 
 @media (max-width : 600px) {
-
-    .plant .image img {
+    .plant__image img {
         aspect-ratio: 5/3;
     }
 
@@ -519,7 +514,7 @@ footer {
             "a a e e f f";
     }
 
-    .plant .image img {
+    .plant__image img {
         aspect-ratio: 3/4;
     }
 
