@@ -247,13 +247,13 @@ section>div.info {
         font-weight: var(--fw-semi-bold);
     }
 
-    flex-shrink: 1;
 }
 
 .plant__author__avatar {
     border-radius: 100%;
-    border: 1px solid black;
     aspect-ratio: 1;
+    border-width: 5px;
+    border-style: inset;
 }
 
 .plant__tags {
@@ -273,55 +273,6 @@ section>div.info {
         display: inline-block;
         border-radius: 1.5rem;
         font-size: var(--fs-100);
-
-        &[data-tag="air"] {
-            background-color: var(--clr-air)
-        }
-
-        &[data-tag="green"] {
-            background-color: var(--clr-green)
-        }
-
-        &[data-tag="fragrant"] {
-            background-color: var(--clr-fragrant)
-        }
-
-        &[data-tag="air"] {
-            background-color: var(--clr-air)
-        }
-
-        &[data-tag="fast"] {
-            background-color: var(--clr-fast)
-        }
-
-        &[data-tag="edible"] {
-            background-color: var(--clr-edible)
-        }
-
-        &[data-tag="easy"] {
-            background-color: var(--clr-easy);
-        }
-
-        &[data-tag="sunloving"] {
-            background-color: var(--clr-sunloving);
-        }
-
-        &[data-tag="flowers"] {
-            background-color: var(--clr-flower);
-        }
-
-        &[data-tag="robust"] {
-            background-color: var(--clr-robust);
-        }
-
-        &[data-tag="decorative"] {
-            background-color: var(--clr-decorative);
-        }
-
-        &[data-tag="colorful"] {
-            background-color: var(--clr-colorful);
-        }
-
     }
 }
 
@@ -410,6 +361,67 @@ footer {
         }
     }
 }
+
+[data-tag="air"] {
+    background-color: var(--clr-air);
+    border-color: var(--clr-air);
+}
+
+[data-tag="green"] {
+    background-color: var(--clr-green);
+    border-color: var(--clr-green)
+}
+
+[data-tag="fragrant"] {
+    background-color: var(--clr-fragrant);
+    border-color: var(--clr-fragrant);
+}
+
+[data-tag="air"] {
+    background-color: var(--clr-air);
+    border-color: var(--clr-air);
+}
+
+[data-tag="fast"] {
+    background-color: var(--clr-fast);
+    border-color: var(--clr-fast);
+}
+
+[data-tag="edible"] {
+    background-color: var(--clr-edible);
+    border-color: var(--clr-edible);
+}
+
+[data-tag="easy"] {
+    background-color: var(--clr-easy);
+    border-color: var(--clr-easy);
+}
+
+[data-tag="sunloving"] {
+    background-color: var(--clr-sunloving);
+    border-color: var(--clr-sunloving);
+}
+
+[data-tag="flowers"] {
+    background-color: var(--clr-flower);
+    border-color: var(--clr-flower);
+}
+
+[data-tag="robust"] {
+    background-color: var(--clr-robust);
+    border-color: var(--clr-robust);
+}
+
+[data-tag="decorative"] {
+    background-color: var(--clr-decorative);
+    border-color: var(--clr-decorative);
+}
+
+[data-tag="colorful"] {
+    background-color: var(--clr-colorful);
+    border-color: var(--clr-colorful);
+}
+
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media (max-width : 992px) {
