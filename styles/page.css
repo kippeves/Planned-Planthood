@@ -1,3 +1,6 @@
+@import 'reset.css';
+@import 'tags.css';
+
 header a,
 main a {
     text-transform: uppercase;
@@ -364,66 +367,6 @@ header .banner__icon g {
             }
         }
     }
-}
-
-[data-tag="air"] {
-    background-color: var(--clr-air);
-    border-color: var(--clr-air);
-}
-
-[data-tag="green"] {
-    background-color: var(--clr-green);
-    border-color: var(--clr-green)
-}
-
-[data-tag="fragrant"] {
-    background-color: var(--clr-fragrant);
-    border-color: var(--clr-fragrant);
-}
-
-[data-tag="air"] {
-    background-color: var(--clr-air);
-    border-color: var(--clr-air);
-}
-
-[data-tag="fast"] {
-    background-color: var(--clr-fast);
-    border-color: var(--clr-fast);
-}
-
-[data-tag="edible"] {
-    background-color: var(--clr-edible);
-    border-color: var(--clr-edible);
-}
-
-[data-tag="easy"] {
-    background-color: var(--clr-easy);
-    border-color: var(--clr-easy);
-}
-
-[data-tag="sunloving"] {
-    background-color: var(--clr-sunloving);
-    border-color: var(--clr-sunloving);
-}
-
-[data-tag="flowers"] {
-    background-color: var(--clr-flower);
-    border-color: var(--clr-flower);
-}
-
-[data-tag="robust"] {
-    background-color: var(--clr-robust);
-    border-color: var(--clr-robust);
-}
-
-[data-tag="decorative"] {
-    background-color: var(--clr-decorative);
-    border-color: var(--clr-decorative);
-}
-
-[data-tag="colorful"] {
-    background-color: var(--clr-colorful);
-    border-color: var(--clr-colorful);
 }
 
 
