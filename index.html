@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="page.css" />
+  <link rel="stylesheet" href="styles/page.css" />
   <title>Planned Planthood</title>
 </head>
 
 <body>
-  <header>
+  <header class="content-grid">
     <nav>
       <div class="banner">
         <svg class="banner__icon" width="214" height="210" viewBox="0 0 214 210" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="content-grid">
     <section class="collage">
       <h2>Uppskattade växter</h2>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, corporis ipsum.</p>
@@ -59,7 +59,7 @@
         <img src="https://picsum.photos/seed/6/800"
           alt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, reprehenderit?" />
     </section>
-    <section class="nyhetsbrev">
+    <section class="nyhetsbrev full-width content-grid">
       <div class="nyhetsbrev__form">
         <h2>Anmäl dig till vårt nyhetsbrev så du inte missar en utsådd!</h2>
         <form action="() =>{}">
@@ -345,25 +345,23 @@
         </footer>
       </article>
     </section>
-    <section>
-      <div class="tidigareOdlingar">
-        <div class="circle">
-          <img alt="" src="Assets/images/icon-seedling.svg" />
-        </div>
-        <div class="tidigareOdlingar__text">
-          <h2>Våra tidigare odlingar</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ratione quia eos pariatur deserunt
-            veritatis.
-            Tenetur, ipsum! Iusto delectus ipsam esse pariatur rerum eveniet nostrum, dolor distinctio nam quaerat
-            doloribus?
-          </p>
-          <a class="roundedButton" href="">Planterade plantor</a>
-        </div>
+    <section class="tidigareOdlingar full-width">
+      <div class="circle">
+        <img alt="" src="Assets/images/icon-seedling.svg" />
+      </div>
+      <div class="tidigareOdlingar__text">
+        <h2>Våra tidigare odlingar</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ratione quia eos pariatur deserunt
+          veritatis.
+          Tenetur, ipsum! Iusto delectus ipsam esse pariatur rerum eveniet nostrum, dolor distinctio nam quaerat
+          doloribus?
+        </p>
+        <a class="roundedButton" href="">Planterade plantor</a>
       </div>
     </section>
   </main>
-  <footer class="page__footer">
+  <footer class="content-grid page__footer">
     <div class="page__footer__content">
       <div class="info">
         <div class="banner">

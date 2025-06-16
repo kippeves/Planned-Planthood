@@ -1,52 +1,54 @@
 @import 'reset.css';
 @import 'tags.css';
 
-header a,
-main a {
+a {
     text-transform: uppercase;
 }
 
-body {
-    display: grid;
-}
-
 header,
-footer,
-main>* {
+footer {
     padding-inline: 1rem;
     display: flex;
     justify-content: center;
 }
 
+.content-grid {
+    --padding-inline: 2rem;
+    --content-max-width: 60rem;
+    --breakout-max-width: 75rem;
+    --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
-main {
     display: grid;
-    grid-auto-rows: auto auto 1fr auto;
-    grid-auto-columns: 1fr auto 1fr;
+    grid-template-columns:
+        [full-width-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+}
 
-    &>*+*:nth-child(2n) {
-        background-color: var(--clr-primary-light-1);
-    }
+.content-grid>* {
+    grid-column: content;
+}
 
-    &>* {
-        padding-block: 3rem;
-    }
+
+.content-grid>.breakout {
+    grid-column: breakout;
+}
+
+.content-grid>.full-width {
+    grid-column: full-width;
+    background-color: white;
 }
 
 .collage {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
 }
 
 .collage__grid {
     background-color: white;
     box-shadow: var(--border-shadow);
     display: grid;
-    width: 100%;
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
+    grid-template-areas: "a a b c d d"
+        "a a e e f f";
 }
 
 .collage img {
@@ -100,9 +102,11 @@ main {
     justify-content: center;
 }
 
-section:last-of-type {
-    margin-bottom: 2rem;
+main>section,
+main>div {
+    padding-block: 2rem;
 }
+
 
 .banner {
     display: flex;
@@ -180,17 +184,16 @@ header .banner__icon g {
         padding: 0.2rem;
         border: 1px solid black;
         display: flex;
-        width: calc(var(--width) - 5rem);
+        width: inherit;
 
         input {
-            --border-radius: 1.25rem;
+            border-radius: inherit;
             outline: none;
             border: none;
             color: var(--clr-primary-dark);
             background: none;
-            text-align: center;
-            width: 100%;
-            margin-inline: 1rem;
+            padding-left: 2rem;
+            width: inherit;
         }
     }
 
@@ -263,6 +266,13 @@ header .banner__icon g {
     border-style: solid;
 }
 
+.collage {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
 .plant__tags {
     display: flex;
     gap: .25rem;
@@ -313,6 +323,7 @@ header .banner__icon g {
 }
 
 .page__footer {
+    margin-top: 2rem;
     color: white;
     background-color: var(--clr-accent);
     font-size: var(--fs-200);
@@ -381,14 +392,6 @@ header .banner__icon g {
         aspect-ratio: 1/1;
     }
 
-    header,
-    footer,
-    main>* {
-        >* {
-            max-width: 100%
-        }
-    }
-
     .tidigareOdlingar {
         flex-direction: column;
         align-items: center;
@@ -450,14 +453,6 @@ header .banner__icon g {
 
 @media (min-width : 992px) {
 
-    header,
-    footer,
-    main>* {
-        >* {
-            max-width: 992px;
-        }
-    }
-
     section>div.info {
         flex-direction: row;
         gap: 5rem;
@@ -467,19 +462,13 @@ header .banner__icon g {
         display: none;
     }
 
-    .collage__grid {
-        padding: 1rem;
-        grid-template-areas: "a a b c d d"
-            "a a e e f f";
-    }
+
 
     .plant__image img {
         aspect-ratio: 3/4;
     }
 
     .plant__grid {
-        max-width: 996px;
-        margin-inline: auto;
         grid-template-columns: repeat(4, 1fr);
     }
 
