@@ -1,7 +1,8 @@
 @import 'reset.css';
 @import 'tags.css';
 
-a {
+.page__header a,
+main a {
     text-transform: uppercase;
 }
 
@@ -45,6 +46,7 @@ footer {
 
 .collage__grid {
     background-color: white;
+    padding: 1rem;
     box-shadow: var(--border-shadow);
     display: grid;
     grid-template-areas: "a a b c d d"
@@ -224,6 +226,7 @@ header .banner__icon g {
     grid-auto-flow: dense;
     grid-template-rows: auto auto 1fr auto auto;
     padding-inline: 0;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .plant {
@@ -252,6 +255,7 @@ header .banner__icon g {
     display: flex;
     flex-direction: column;
     align-self: center;
+    font-size: var(--fs-200);
 
     .name {
         font-weight: var(--fw-semi-bold);
@@ -275,7 +279,7 @@ header .banner__icon g {
 
 .plant__tags {
     display: flex;
-    gap: .25rem;
+    gap: .4rem;
     flex-wrap: wrap;
     align-self: center;
     text-transform: uppercase;
@@ -423,7 +427,6 @@ header .banner__icon g {
     }
 
     .collage__grid {
-        padding: 1.5rem;
         grid-template-areas: "a b c"
             "d e f";
     }
@@ -440,7 +443,6 @@ header .banner__icon g {
     }
 
     .collage__grid {
-        padding: 2rem;
         grid-template-areas: "a b"
             "c d"
             "e f";
@@ -462,14 +464,8 @@ header .banner__icon g {
         display: none;
     }
 
-
-
     .plant__image img {
         aspect-ratio: 3/4;
-    }
-
-    .plant__grid {
-        grid-template-columns: repeat(4, 1fr);
     }
 
     .nyhetsbrev__form {
