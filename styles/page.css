@@ -1,0 +1,563 @@
+@import "reset.css";
+@import "tags.css";
+
+/* Block */
+
+/*
+
+    Based on: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+*/
+
+h2 {
+    font-size: clamp(var(--fs-500), -0.875rem + 8.333vw, var(--fs-700));
+}
+
+main {
+    container: main / inline-size;
+
+    /* 
+        Creates a gap based on the width of the main-container.
+        On thinner displays the gap is smaller, is mainly used 
+        for the flex-based containers, Newsletter and Cultivations
+        to stop the gap from expanding on smaller screens.
+    */
+
+    --_gap: 4cqi;
+
+    >* {
+        padding-block: 3rem;
+    }
+}
+
+.page__header {
+    background-color: var(--clr-neutral-100);
+}
+
+.page__footer {
+    --_spacing: 2rem;
+
+    color: var(--clr-neutral-100);
+    background-color: var(--clr-accent);
+    margin-top: var(--_spacing);
+
+    a {
+        color: var(--clr-accent-light-1);
+        font-weight: var(--fw-bold);
+    }
+
+}
+
+.page__footer__content {
+    display: flex;
+    padding-block: var(--_spacing);
+    font-size: var(--fs-200);
+    justify-content: space-between;
+}
+
+/* 
+    Banner with the logo of Planned Planthood and text. 
+    Is reused in the header and footer.
+*/
+
+.logo__banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--fs-400);
+    height: 3rem;
+    max-width: 10rem;
+}
+
+/*
+    Used for the centering the content with the 
+    possibility of breaking out the content with 
+    full sizewidth.
+*/
+
+.content-grid {
+    --padding-inline: 2rem;
+    --content-max-width: 60rem;
+    --breakout-max-width: 75rem;
+    --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+    display: grid;
+    grid-template-columns: [full-width-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0,
+            var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2),
+            var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline),
+            1fr) [full-width-end];
+}
+
+.content-grid>:not(.breakout, .full-width),
+.full-width>:not(.breakout, .full-width) {
+    grid-column: content;
+}
+
+.content-grid>.breakout {
+    grid-column: breakout;
+}
+
+.content-grid>.full-width {
+    grid-column: full-width;
+}
+
+.collage {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+/*
+    The gap-variable is set in the main-class and
+    is used by the flex-containers to have even
+    spacing in the different screen-sizes.
+*/
+
+.cultivations {
+    display: flex;
+    justify-content: center;
+    gap: var(--_gap);
+}
+
+.roundedButton {
+    --_color: var(--clr-accent);
+
+    color: var(--clr-neutral-100);
+    background-color: var(--_color);
+    border: 1px solid var(--_color);
+    border-radius: 1.25rem;
+    padding: 0.5rem 1rem;
+}
+
+/*
+    Used to decorate a SVG-icon with 
+    a circular accent-background
+*/
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: var(--clr-accent);
+    aspect-ratio: 1;
+    height: var(--__height, 5rem);
+
+    img {
+        aspect-ratio: inherit;
+        width: 50%;
+        height: auto;
+    }
+
+    &.circle-sm {
+        --__height: min(12rem, 25cqi);
+    }
+
+    &.circle-md {
+        --__height: min(15rem, 25cqi);
+    }
+}
+
+/* Element */
+
+
+.page__header__navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo__banner__text {
+        color: var(--clr-accent);
+    }
+
+    .logo__banner__icon g {
+        stroke: var(--clr-accent);
+    }
+}
+
+.page__header__navigation__menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    a {
+        display: inline-block;
+        padding: 1rem;
+        font-weight: var(--fw-semi-bold);
+        text-transform: uppercase;
+    }
+}
+
+.collage__grid {
+    background-color: var(--clr-neutral-100);
+    padding: 1rem;
+    box-shadow: var(--border-shadow);
+    display: grid;
+    grid-template-areas:
+        "photo1 photo1 photo2 photo3 photo4 photo4"
+        "photo1 photo1 photo5 photo5 photo6 photo6";
+
+    /*
+        Create even conditions for the photos since some
+        of them have different dimensions. Sets them to 
+        a square shape that conforms uniformly and therefore
+        creates the square image instead of rectangular one.
+    */
+    img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        aspect-ratio: 1;
+
+        &:nth-child(1) {
+            grid-area: photo1;
+        }
+
+        &:nth-child(2) {
+            grid-area: photo2;
+        }
+
+        &:nth-child(3) {
+            grid-area: photo3;
+        }
+
+        &:nth-child(4) {
+            grid-area: photo4;
+        }
+
+        &:nth-child(5) {
+            grid-area: photo5;
+        }
+
+        &:nth-child(6) {
+            grid-area: photo6;
+        }
+    }
+}
+
+
+.newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--_gap);
+    min-width: 100%;
+}
+
+.logo__banner__text {
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    font-size: var(--fs-400);
+    line-height: 1;
+}
+
+.logo__banner__icon {
+    height: 125%;
+    width: auto;
+}
+
+.newsletter__form {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 40ch;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+
+    form {
+        background-color: white;
+        justify-content: space-between;
+        border-radius: 1.5rem;
+        padding: 0.2rem;
+        border: 1px solid var(--clr-primary-dark);
+        display: flex;
+        min-width: 100%;
+
+        input {
+            border-radius: inherit;
+            outline: none;
+            border: none;
+            color: var(--clr-primary-dark);
+            background: none;
+            padding-left: 2rem;
+            max-width: 100%;
+        }
+    }
+}
+
+.cultivations__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    a {
+        align-self: flex-end;
+    }
+}
+
+.plant-grid {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: dense;
+    margin: 0;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(225px, 100%), 1fr));
+}
+
+.plant-grid__item {
+    display: grid;
+    grid-template-rows: subgrid;
+    background-color: white;
+    grid-row: span 5;
+    padding: 0.9rem;
+    box-shadow: var(--border-shadow);
+    gap: 1rem;
+
+    h3 {
+        font-size: var(--fs-600);
+    }
+}
+
+.plant-grid__item__author {
+    display: flex;
+    padding: 0;
+    height: 50px;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.plant-grid__item__author__info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-size: var(--fs-200);
+
+    span {
+        font-weight: var(--fw-semi-bold);
+    }
+}
+
+
+.plant-grid__item__author__avatar {
+    border-radius: 100%;
+    aspect-ratio: 1;
+
+    /* 
+        Border-color is set by the tag 
+        defined on the avatar. If no tag 
+        is set then no border is set.
+    */
+
+    border-width: 1px;
+    border-style: solid;
+}
+
+.page__header__navigation__hamburger {
+    background: none;
+    border: none;
+    padding-inline: var(--fs-400);
+    color: var(--clr-accent);
+    font-size: var(--fs-800);
+}
+
+.plant-grid__item__tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-self: center;
+    text-transform: uppercase;
+    align-items: flex-start;
+    justify-content: start;
+    height: 100%;
+
+    li {
+        padding: 0.5rem 0.75rem;
+        font-weight: var(--fw-bold);
+        color: white;
+        border-radius: 1.5rem;
+        font-size: var(--fs-100);
+    }
+}
+
+.plant-grid__item__description {
+    font-size: clamp(var(--fs-200), 0.4896rem + 0.8333vw, var(--fs-400));
+    font-weight: var(--fw-400);
+}
+
+.plant-grid__item__image {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+
+    >img {
+        grid-row-start: 1;
+        grid-column-start: 1;
+        aspect-ratio: 3/4;
+        width: 100%;
+    }
+
+    :not(.watermark) {
+        object-fit: cover;
+    }
+
+    .watermark {
+        scale: 0.4;
+        filter: opacity(0.4);
+    }
+}
+
+.page__footer__content__info {
+    /* Sets a unified gapsize for the entire section*/
+    --_gap: 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--_gap);
+
+    ul {
+        display: inherit;
+        flex-direction: inherit;
+        gap: var(--_gap);
+
+        /*
+            Contact information. 
+            The gap is for the icon and link.
+        */
+
+        li {
+            display: flex;
+            gap: var(--_gap);
+
+            img {
+                scale: 0.75;
+            }
+        }
+    }
+}
+
+.page__footer__content__info__contact {
+    font-weight: var(--fw-bold);
+}
+
+.page__footer__content__menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.page__footer__content__info__text {
+    text-align: start;
+    max-width: 50ch;
+}
+
+
+/* Modifiers */
+
+main>*:nth-child(even) {
+    background-color: var(--clr-neutral-100);
+}
+
+.roundedButton:hover,
+.roundedButton:focus-visible {
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.newsletter__form {
+    form:focus-within {
+        border: 1px solid var(--clr-accent);
+    }
+
+}
+
+.page__header__navigation__menu a:hover,
+.page__header__navigation__menu a:focus-visible {
+    background-color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.page__header__navigation__hamburger:hover,
+.page__header__navigation__hamburger:focus-visible {
+    background-color: var(--clr-accent);
+    color: white;
+}
+
+/*
+    For hiding content for desktop 
+    and mobile-only modes.
+*/
+
+@media (width > 60rem) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media(width <=60rem) {
+    .desktop {
+        display: none;
+    }
+}
+
+/* 
+    Maincontainer for desktopsizes.
+*/
+
+@container main (width <=60rem) {
+    .plant-grid__item__image img {
+        aspect-ratio: 1/1;
+    }
+
+    .cultivations {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .circle {
+            order: -1;
+        }
+    }
+
+    .newsletter__form {
+        max-width: 60ch;
+    }
+
+    .collage {
+        text-align: center;
+    }
+
+    .collage__grid {
+        grid-template-areas:
+            "photo1 photo2 photo3"
+            "photo4 photo5 photo6";
+    }
+
+    .plant-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@container main (width < 40rem) {
+    .plant-grid__item__image img {
+        aspect-ratio: 5/3;
+    }
+
+    .collage__grid {
+        grid-template-areas:
+            "photo1 photo2"
+            "photo3 photo4"
+            "photo5 photo6";
+    }
+
+    .plant-grid {
+        grid-template-columns: 1fr;
+    }
+}
