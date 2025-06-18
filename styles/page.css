@@ -1,29 +1,57 @@
 @import "reset.css";
 @import "tags.css";
 
-
-
-
 /* Block */
-main>* {
-    padding-block: 2rem;
+
+
+
+main {
+    container: main / inline-size;
+
+    /* 
+        Creates a gap based on the width of the main-container.
+        On thinner displays the gap is smaller, is mainly used 
+        for the flex-based containers, Newsletter and Cultivations
+        to stop the gap from expanding on smaller screens.
+    */
+
+    --_gap: 4cqi;
+
+    >* {
+        padding-block: 2rem;
+    }
 }
 
 .page__header {
-    display: flex;
-    padding-inline: 1rem;
     background-color: white;
-    height: 100%;
 }
 
 .page__footer {
-    display: flex;
-    margin-top: 2rem;
-    color: white;
     background-color: var(--clr-accent);
-    font-size: var(--fs-200);
-    padding-block: 2rem;
+    margin-top: 2rem;
+
+    a {
+        color: var(--clr-accent-light-1);
+        font-weight: var(--fw-bold);
+    }
+
+    color: white;
 }
+
+.page__footer__content {
+    display: flex;
+    padding-block: 2rem;
+    font-size: var(--fs-200);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+/* 
+    Banner with the logo of Planned Planthood and text. 
+    Is reused in the header and footer.
+*/
 
 .logo__banner {
     display: flex;
@@ -33,6 +61,12 @@ main>* {
     gap: 1rem;
     max-width: 10rem;
 }
+
+/*
+    Used for the centering the content with the 
+    possibility of breaking out the content with 
+    full sizewidth.
+*/
 
 .content-grid {
     --padding-inline: 2rem;
@@ -45,17 +79,20 @@ main>* {
             var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline),
             1fr) [full-width-end];
 
-    >* {
-        grid-column: content;
-    }
 
-    >.breakout {
-        grid-column: breakout;
-    }
+}
 
-    >.full-width {
-        grid-column: full-width;
-    }
+.content-grid>:not(.breakout, .full-width),
+.full-width>:not(.breakout, .full-width) {
+    grid-column: content;
+}
+
+.content-grid>.breakout {
+    grid-column: breakout;
+}
+
+.content-grid>.full-width {
+    grid-column: full-width;
 }
 
 .collage {
@@ -63,49 +100,12 @@ main>* {
     flex-direction: column;
     gap: 2rem;
     align-items: center;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        aspect-ratio: 1;
-
-        &:nth-child(1) {
-            grid-area: a;
-        }
-
-        &:nth-child(2) {
-            grid-area: b;
-        }
-
-        &:nth-child(3) {
-            grid-area: c;
-        }
-
-        &:nth-child(4) {
-            grid-area: d;
-        }
-
-        &:nth-child(5) {
-            grid-area: e;
-        }
-
-        &:nth-child(6) {
-            grid-area: f;
-        }
-    }
-}
-
-.newsletter {
-    display: flex;
-    justify-content: center;
-    align-content: center;
 }
 
 .cultivations {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: var(--_gap);
 }
 
 .roundedButton {
@@ -116,22 +116,35 @@ main>* {
     color: white;
     background-color: var(--clr-accent);
     border: 1px solid var(--clr-accent);
-
-    &:hover {
-        background-color: white;
-        color: var(--clr-accent);
-        text-decoration: none;
-    }
 }
+
+/*
+    Used to decorate a SVG-icon with 
+    a circular accent-background
+*/
 
 .circle {
     display: flex;
-    aspect-ratio: 1;
-    border-radius: 100%;
-    padding: 3rem;
-    background-color: var(--clr-accent);
-    height: 12rem;
     justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: var(--clr-accent);
+    aspect-ratio: 1;
+    height: var(--__height, 5rem);
+
+    img {
+        aspect-ratio: inherit;
+        width: 50%;
+        height: auto;
+    }
+
+    &.circle-sm {
+        --__height: 12rem;
+    }
+
+    &.circle-md {
+        --__height: 15rem;
+    }
 }
 
 /* Element */
@@ -142,8 +155,15 @@ main>* {
     flex-direction: row;
     gap: 2rem;
     justify-content: space-between;
-    height: 100%;
     align-items: center;
+
+    .logo__banner__text {
+        color: var(--clr-accent);
+    }
+
+    .logo__banner__icon g {
+        stroke: var(--clr-accent);
+    }
 }
 
 .page__header__navigation__menu {
@@ -159,22 +179,55 @@ main>* {
     }
 }
 
-.page__header .logo__banner__text {
-    color: var(--clr-accent);
-}
-
-.page__header .logo__banner__icon g {
-    stroke: var(--clr-accent);
-}
-
 .collage__grid {
     background-color: white;
-    padding: 1rem;
+    padding: calc(2rem - clamp(0rem, 1cqi, 1rem));
     box-shadow: var(--border-shadow);
     display: grid;
     grid-template-areas:
-        "a a b c d d"
-        "a a e e f f";
+        "photo1 photo1 photo2 photo3 photo4 photo4"
+        "photo1 photo1 photo5 photo5 photo6 photo6";
+
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1;
+
+        &:nth-child(1) {
+            grid-area: photo1;
+        }
+
+        &:nth-child(2) {
+            grid-area: photo2;
+        }
+
+        &:nth-child(3) {
+            grid-area: photo3;
+        }
+
+        &:nth-child(4) {
+            grid-area: photo4;
+        }
+
+        &:nth-child(5) {
+            grid-area: photo5;
+        }
+
+        &:nth-child(6) {
+            grid-area: photo6;
+        }
+    }
+}
+
+
+.newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--_gap);
+    min-width: 100%;
 }
 
 .logo__banner__text {
@@ -190,20 +243,21 @@ main>* {
 }
 
 .newsletter__form {
-    --border-radius: 3rem;
-    --width: 25rem;
     display: flex;
+    flex-wrap: wrap;
+    max-width: 40ch;
     flex-direction: column;
-    max-width: var(--width);
     gap: 1rem;
     align-items: flex-start;
 
     form {
-        border-radius: var(--border-radius);
+        background-color: white;
+        justify-content: space-between;
+        border-radius: 1.5rem;
         padding: 0.2rem;
         border: 1px solid black;
         display: flex;
-        width: inherit;
+        min-width: 100%;
 
         input {
             border-radius: inherit;
@@ -212,7 +266,7 @@ main>* {
             color: var(--clr-primary-dark);
             background: none;
             padding-left: 2rem;
-            width: inherit;
+            max-width: 100%;
         }
     }
 }
@@ -231,8 +285,8 @@ main>* {
     display: grid;
     gap: 1rem;
     grid-auto-flow: dense;
+    margin: 0;
     grid-template-rows: auto auto 1fr auto auto;
-    padding-inline: 0;
     grid-template-columns: repeat(4, 1fr);
 }
 
@@ -264,14 +318,22 @@ main>* {
     align-self: center;
     font-size: var(--fs-200);
 
-    .name {
+    span {
         font-weight: var(--fw-semi-bold);
     }
 }
 
+
 .plant-grid__item__author__avatar {
     border-radius: 100%;
     aspect-ratio: 1;
+
+    /* 
+        Border-color is set by the tag 
+        defined on the avatar. If no tag 
+        is set then no border is set.
+    */
+
     border-width: 1px;
     border-style: solid;
 }
@@ -279,7 +341,7 @@ main>* {
 .page__header__navigation__hamburger {
     background: none;
     border: none;
-    padding-inline: 1rem;
+    padding-inline: var(--fs-400);
     color: var(--clr-accent);
     font-size: var(--fs-800);
 }
@@ -307,7 +369,6 @@ main>* {
 .plant-grid__item__description {
     font-weight: var(--fw-400);
     font-size: var(--fs-400);
-    text-wrap: pretty;
 }
 
 .plant-grid__item__image {
@@ -319,46 +380,41 @@ main>* {
         grid-row-start: 1;
         grid-column-start: 1;
         aspect-ratio: 3/4;
+        width: 100%;
     }
 
     :not(.watermark) {
         object-fit: cover;
-        height: 100%;
-        width: 100%;
     }
 
     .watermark {
         scale: 35%;
-        filter: opacity(50%);
-    }
-}
-
-.page__footer__content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
-
-    a {
-        color: var(--clr-accent-light-1);
-        font-weight: var(--fw-bold);
+        filter: opacity(0.4);
     }
 }
 
 .page__footer__content__info {
+    /* Sets a unified gapsize for the entire section*/
+    --_gap: 0.75rem;
+
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--_gap);
 
     ul {
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: inherit;
+        gap: var(--_gap);
+
+        /*
+            Contact information. 
+            The gap is for the icon and link.
+        */
 
         li {
+            /* Direction is inheritly row */
             display: flex;
-            gap: 0.5rem;
-            row-gap: 1rem;
+            gap: var(--_gap);
 
             img {
                 scale: 0.75;
@@ -367,7 +423,7 @@ main>* {
     }
 }
 
-.page__footer__content__info__contact a {
+.page__footer__content__info__contact {
     font-weight: var(--fw-bold);
 }
 
@@ -379,7 +435,7 @@ main>* {
 
 .page__footer__content__info__text {
     text-align: start;
-    max-width: 22rem;
+    max-width: 50ch;
 }
 
 
@@ -389,15 +445,36 @@ main>*:nth-child(even) {
     background-color: white;
 }
 
-.page__header__navigation__menu li:hover {
+.roundedButton:hover,
+.roundedButton:focus-visible {
+    background-color: white;
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.newsletter__form {
+    form:focus-within {
+        border: 1px solid var(--clr-accent);
+    }
+
+}
+
+.page__header__navigation__menu li:hover,
+.page__header__navigation__menu li:focus-visible {
     background-color: var(--clr-accent);
     text-decoration: none;
 }
 
-.page__header__navigation__hamburger:hover {
+.page__header__navigation__hamburger:hover,
+.page__header__navigation__hamburger:focus-visible {
     background-color: var(--clr-accent);
     color: white;
 }
+
+/*
+    For hiding content for desktop 
+    and mobile-only modes.
+*/
 
 @media (width > 60rem) {
     .mobile {
@@ -405,12 +482,17 @@ main>*:nth-child(even) {
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media (width <=60rem) {
+@media(width <=60rem) {
     .desktop {
         display: none;
     }
+}
 
+/* 
+    Maincontainer for desktopsizes.
+*/
+
+@container main (width <=60rem) {
     .plant-grid__item__image img {
         aspect-ratio: 1/1;
     }
@@ -418,36 +500,27 @@ main>*:nth-child(even) {
     .cultivations {
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
         text-align: center;
     }
 
     .newsletter {
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
         text-align: center;
-        max-width: 100%;
 
         .circle {
             order: -1;
         }
+    }
 
-        .form {
-            max-width: 100%;
-            align-items: center;
-
-            form,
-            .wrapper {
-                width: 100%;
-            }
-        }
+    .newsletter__form {
+        max-width: 60ch;
     }
 
     .collage__grid {
         grid-template-areas:
-            "a b c"
-            "d e f";
+            "photo1 photo2 photo3"
+            "photo4 photo5 photo6";
     }
 
     .plant-grid {
@@ -455,16 +528,16 @@ main>*:nth-child(even) {
     }
 }
 
-@media (width < 40rem) {
+@container main (width < 40rem) {
     .plant-grid__item__image img {
         aspect-ratio: 5/3;
     }
 
     .collage__grid {
         grid-template-areas:
-            "a b"
-            "c d"
-            "e f";
+            "photo1 photo2"
+            "photo3 photo4"
+            "photo5 photo6";
     }
 
     .plant-grid {
