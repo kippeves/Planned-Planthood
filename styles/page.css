@@ -3,7 +3,13 @@
 
 /* Block */
 
+/*
 
+    Based on: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+*/
+h2 {
+    font-size: clamp(var(--fs-500), -0.875rem + 8.333vw, var(--fs-700));
+}
 
 main {
     container: main / inline-size;
@@ -18,34 +24,33 @@ main {
     --_gap: 4cqi;
 
     >* {
-        padding-block: 2rem;
+        padding-block: 3rem;
     }
 }
 
 .page__header {
-    background-color: white;
+    background-color: var(--clr-neutral-100);
 }
 
 .page__footer {
+    --_spacing: 2rem;
+
+    color: var(--clr-neutral-100);
     background-color: var(--clr-accent);
-    margin-top: 2rem;
+    margin-top: var(--_spacing);
 
     a {
         color: var(--clr-accent-light-1);
         font-weight: var(--fw-bold);
     }
 
-    color: white;
 }
 
 .page__footer__content {
     display: flex;
-    padding-block: 2rem;
+    padding-block: var(--_spacing);
     font-size: var(--fs-200);
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
-
 }
 
 /* 
@@ -57,8 +62,8 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: var(--fs-400);
     height: 3rem;
-    gap: 1rem;
     max-width: 10rem;
 }
 
@@ -78,8 +83,6 @@ main {
             var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2),
             var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline),
             1fr) [full-width-end];
-
-
 }
 
 .content-grid>:not(.breakout, .full-width),
@@ -102,6 +105,12 @@ main {
     align-items: center;
 }
 
+/*
+    The gap-variable is set in the main-class and
+    is used by the flex-containers to have even
+    spacing in the different screen-sizes.
+*/
+
 .cultivations {
     display: flex;
     justify-content: center;
@@ -109,13 +118,13 @@ main {
 }
 
 .roundedButton {
+    --_color: var(--clr-accent);
+
+    color: var(--clr-neutral-100);
+    background-color: var(--_color);
+    border: 1px solid var(--_color);
     border-radius: 1.25rem;
-    outline: none;
-    border: none;
     padding: 0.5rem 1rem;
-    color: white;
-    background-color: var(--clr-accent);
-    border: 1px solid var(--clr-accent);
 }
 
 /*
@@ -180,18 +189,23 @@ main {
 }
 
 .collage__grid {
-    background-color: white;
-    padding: calc(2rem - clamp(0rem, 1cqi, 1rem));
+    background-color: var(--clr-neutral-100);
+    padding: 1rem;
     box-shadow: var(--border-shadow);
     display: grid;
     grid-template-areas:
         "photo1 photo1 photo2 photo3 photo4 photo4"
         "photo1 photo1 photo5 photo5 photo6 photo6";
 
-
+    /*
+        Create even conditions for the photos since some
+        of them have different dimensions. Sets them to 
+        a square shape that conforms uniformly and therefore
+        creates the square image instead of rectangular one.
+    */
     img {
-        width: 100%;
         height: 100%;
+        width: auto;
         object-fit: cover;
         aspect-ratio: 1;
 
@@ -255,7 +269,7 @@ main {
         justify-content: space-between;
         border-radius: 1.5rem;
         padding: 0.2rem;
-        border: 1px solid black;
+        border: 1px solid var(--clr-primary-dark);
         display: flex;
         min-width: 100%;
 
@@ -357,10 +371,9 @@ main {
     height: 100%;
 
     li {
-        padding: 0.5rem;
+        padding: 0.5rem 0.75rem;
         font-weight: var(--fw-bold);
         color: white;
-        display: inline-block;
         border-radius: 1.5rem;
         font-size: var(--fs-100);
     }
@@ -388,7 +401,7 @@ main {
     }
 
     .watermark {
-        scale: 35%;
+        scale: 0.4;
         filter: opacity(0.4);
     }
 }
@@ -402,7 +415,7 @@ main {
     gap: var(--_gap);
 
     ul {
-        display: flex;
+        display: inherit;
         flex-direction: inherit;
         gap: var(--_gap);
 
@@ -412,7 +425,6 @@ main {
         */
 
         li {
-            /* Direction is inheritly row */
             display: flex;
             gap: var(--_gap);
 
@@ -442,12 +454,12 @@ main {
 /* Modifiers */
 
 main>*:nth-child(even) {
-    background-color: white;
+    background-color: var(--clr-neutral-100);
 }
 
 .roundedButton:hover,
 .roundedButton:focus-visible {
-    background-color: white;
+    background-color: var(--clr-neutral-100);
     color: var(--clr-accent);
     text-decoration: none;
 }
@@ -459,8 +471,8 @@ main>*:nth-child(even) {
 
 }
 
-.page__header__navigation__menu li:hover,
-.page__header__navigation__menu li:focus-visible {
+.page__header__navigation__menu a:hover,
+.page__header__navigation__menu a:focus-visible {
     background-color: var(--clr-accent);
     text-decoration: none;
 }
@@ -515,6 +527,10 @@ main>*:nth-child(even) {
 
     .newsletter__form {
         max-width: 60ch;
+    }
+
+    .collage {
+        text-align: center;
     }
 
     .collage__grid {
