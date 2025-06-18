@@ -7,6 +7,7 @@
 
     Based on: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 */
+
 h2 {
     font-size: clamp(var(--fs-500), -0.875rem + 8.333vw, var(--fs-700));
 }
@@ -148,11 +149,11 @@ main {
     }
 
     &.circle-sm {
-        --__height: 12rem;
+        --__height: min(12rem, 25cqi);
     }
 
     &.circle-md {
-        --__height: 15rem;
+        --__height: min(15rem, 25cqi);
     }
 }
 
@@ -301,7 +302,7 @@ main {
     grid-auto-flow: dense;
     margin: 0;
     grid-template-rows: auto auto 1fr auto auto;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(225px, 100%), 1fr));
 }
 
 .plant-grid__item {
@@ -380,8 +381,8 @@ main {
 }
 
 .plant-grid__item__description {
+    font-size: clamp(var(--fs-200), 0.4896rem + 0.8333vw, var(--fs-400));
     font-weight: var(--fw-400);
-    font-size: var(--fs-400);
 }
 
 .plant-grid__item__image {
